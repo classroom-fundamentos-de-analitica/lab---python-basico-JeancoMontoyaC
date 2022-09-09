@@ -67,49 +67,58 @@ def pregunta_03():
         tu=(q,u)
         n+=[tu]
     return sorted(n)
-print(pregunta_03())
+
 
 def pregunta_04():
-    """
-    La columna 3 contiene una fecha en formato `YYYY-MM-DD`. Retorne la cantidad de
-    registros por cada mes, tal como se muestra a continuación.
+    x = open("data.csv", "r")
+    x = [z.replace("\n", "") for z in x]
+    x = [z.split("\t") for z in x]
+    m=[]
+    for i in x:
+        m+=[i[2].split("-")]
+   
+    lista=[]
+    lista2=[]
+    for w in m:
+        if w[1] not in lista:
+            lista.append(w[1])
+    for r in lista:
+        cont=0
+        for t in m:
+            if r==t[1]:
+                cont+=1
+        tu=(r,cont)
+        lista2+=[tu]
+                
 
-    Rta/
-    [
-        ("01", 3),
-        ("02", 4),
-        ("03", 2),
-        ("04", 4),
-        ("05", 3),
-        ("06", 3),
-        ("07", 5),
-        ("08", 6),
-        ("09", 3),
-        ("10", 2),
-        ("11", 2),
-        ("12", 3),
-    ]
+    return sorted(lista2)
 
-    """
-    return
 
 
 def pregunta_05():
-    """
-    Retorne una lista de tuplas con el valor maximo y minimo de la columna 2 por cada
-    letra de la columa 1.
+    x = open("data.csv", "r")
+    x = [z.replace("\n", "") for z in x]
+    x = [z.split("\t") for z in x]
+    m=[]
+    lis=[]
+    for y in x:
+        del y[2:5]
+    for y in x:
+        if y[0] not in m:
+            m+=[y[0]]
+    for mm in m:
+        lista=[]
+        for xx in x:
+            if xx[0]==mm:
+                lista+=[int(xx[1])]
+       
+        tu=(mm,max(lista),min(lista))
+        lis+=[tu]
+        
 
-    Rta/
-    [
-        ("A", 9, 2),
-        ("B", 9, 1),
-        ("C", 9, 0),
-        ("D", 8, 3),
-        ("E", 9, 1),
-    ]
 
-    """
-    return
+    return sorted(lis)
+print(pregunta_05())
 
 
 def pregunta_06():
