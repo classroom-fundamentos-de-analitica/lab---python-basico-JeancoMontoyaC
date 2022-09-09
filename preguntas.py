@@ -14,51 +14,60 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 def pregunta_01():
-    """
-    Retorne la suma de la segunda columna.
 
-    Rta/
-    214
+    x = open("data.csv", "r")
+    x = [z.replace("\n", "") for z in x]
+    x = [z.split("\t") for z in x]
+    
+    d=0
+    for w in x:
+        d+=int(w[1])
 
-    """
-    return
+    return d
+
+
 
 
 def pregunta_02():
-    """
-    Retorne la cantidad de registros por cada letra de la primera columna como la lista
-    de tuplas (letra, cantidad), ordendas alfabéticamente.
+    x = open("data.csv", "r")
+    x = [z.replace("\n", "") for z in x]
+    x = [z.split("\t") for z in x]
+    m=[]
+    for y in x:
+        if y[0] not in m:
+            m+=[y[0]]
+    tu=()
+    n=[]
+    for q in m:
+        u=0
+        for t in x:
+            if q==t[0]:
+                u+=1
+        tu=(q,u)
+        n+=[tu]
+    return sorted(n)
 
-    Rta/
-    [
-        ("A", 8),
-        ("B", 7),
-        ("C", 5),
-        ("D", 6),
-        ("E", 14),
-    ]
-
-    """
-    return
 
 
 def pregunta_03():
-    """
-    Retorne la suma de la columna 2 por cada letra de la primera columna como una lista
-    de tuplas (letra, suma) ordendas alfabeticamente.
-
-    Rta/
-    [
-        ("A", 53),
-        ("B", 36),
-        ("C", 27),
-        ("D", 31),
-        ("E", 67),
-    ]
-
-    """
-    return
-
+    x = open("data.csv", "r")
+    x = [z.replace("\n", "") for z in x]
+    x = [z.split("\t") for z in x]
+    m=[]
+    for y in x:
+        if y[0] not in m:
+            m+=[y[0]]
+    tu=()
+    n=[]
+    for q in m:
+        u=0
+        for t in x:
+            if q==t[0]:
+                u+=int(t[1])
+        tu=(q,u)
+        n+=[tu]
+    return sorted(n)
+print(pregunta_03())
 
 def pregunta_04():
     """
