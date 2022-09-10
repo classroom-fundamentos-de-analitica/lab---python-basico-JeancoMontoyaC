@@ -191,26 +191,26 @@ def pregunta_08():
 
 
 def pregunta_09():
-    """
-    Retorne un diccionario que contenga la cantidad de registros en que aparece cada
-    clave de la columna 5.
-
-    Rta/
-    {
-        "aaa": 13,
-        "bbb": 16,
-        "ccc": 23,
-        "ddd": 23,
-        "eee": 15,
-        "fff": 20,
-        "ggg": 13,
-        "hhh": 16,
-        "iii": 18,
-        "jjj": 18,
-    }
-
-    """
-    return
+    x = open("data.csv", "r")
+    x = [z.replace("\n", "") for z in x]
+    x = [z.split("\t") for z in x]
+    m=[]
+    for y in x:
+        h=y[4].split(",")
+        for t in h:
+            if t[0:3] not in m:
+                m+=[t[0:3]]
+    lis=[]
+    for mm in m:
+        count=0
+        for y in x:
+            if mm in y[4]:
+                count+=1
+        tu=(mm,count)
+        lis+=[tu]
+    
+    return dict(sorted(lis))
+print(pregunta_09())
 
 
 def pregunta_10():
@@ -278,4 +278,4 @@ def pregunta_12():
         lis+=[tu]  
      
     return dict(sorted(lis))
-print(pregunta_12())
+
