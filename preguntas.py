@@ -187,7 +187,7 @@ def pregunta_08():
                 co+=[t[0]]
         tu+=[(int(p),sorted(co))]
     return sorted(tu)
-print(pregunta_08())
+
 
 
 def pregunta_09():
@@ -214,60 +214,68 @@ def pregunta_09():
 
 
 def pregunta_10():
-    """
-    Retorne una lista de tuplas contengan por cada tupla, la letra de la columna 1 y la
-    cantidad de elementos de las columnas 4 y 5.
+    x = open("data.csv", "r")
+    x = [z.replace("\n", "") for z in x]
+    x = [z.split("\t") for z in x]
+    m=[]
+    for y in x:
+        h=y[4].split(",")
+        i=y[3].split(",")
+        
+        tu=(y[0],len(i),len(h))
+        m+=[tu]
 
-    Rta/
-    [
-        ("E", 3, 5),
-        ("A", 3, 4),
-        ("B", 4, 4),
-        ...
-        ("C", 4, 3),
-        ("E", 2, 3),
-        ("E", 3, 3),
-    ]
+    return m
 
-
-    """
-    return
 
 
 def pregunta_11():
-    """
-    Retorne un diccionario que contengan la suma de la columna 2 para cada letra de la
-    columna 4, ordenadas alfabeticamente.
+    x = open("data.csv", "r")
+    x = [z.replace("\n", "") for z in x]
+    x = [z.split("\t") for z in x]
+    m=[]
+    lis=[]
+    for y in x:
+        u=y[3].split(",")
+        for uu in u:
+            if uu not in m:
+                m+=[uu]
+    for mm in m:
+        count=0
+        for y in x:
+            if mm in y[3]:
+                count+=int(y[1])
+        tu=(mm,count)
+        lis+=[tu]
 
-    Rta/
-    {
-        "a": 122,
-        "b": 49,
-        "c": 91,
-        "d": 73,
-        "e": 86,
-        "f": 134,
-        "g": 35,
-    }
 
+    return dict(sorted(lis))
 
-    """
-    return
 
 
 def pregunta_12():
-    """
-    Genere un diccionario que contengan como clave la columna 1 y como valor la suma de
-    los valores de la columna 5 sobre todo el archivo.
-
-    Rta/
-    {
-        'A': 177,
-        'B': 187,
-        'C': 114,
-        'D': 136,
-        'E': 324
-    }
-
-    """
-    return
+    x = open("data.csv", "r")
+    x = [z.replace("\n", "") for z in x]
+    x = [z.split("\t") for z in x]
+    m=[]
+    for y in x:
+        if y[0] not in m:
+            m+=[y[0]]
+    
+    lis=[]
+    for mm in m:
+        count=0
+        for t in x:
+            count2=0
+            h=t[4].split(",")
+            for y in h:
+                po=(int(y.replace(y[0:4],"")))
+                count2+=po
+            
+            if mm==t[0]:
+                count+=count2
+        tu=(mm,count)
+        lis+=[tu]  
+     
+    return dict(sorted(lis))
+print(pregunta_12())
