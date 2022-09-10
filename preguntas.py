@@ -164,37 +164,30 @@ def pregunta_07():
             if p==t[1]:
                 co+=[t[0]]
         tu+=[(int(p),co)]
-
-
-
-
     return sorted(tu)
-print(pregunta_07())
+
 
 
 def pregunta_08():
-    """
-    Genere una lista de tuplas, donde el primer elemento de cada tupla contiene  el valor
-    de la segunda columna; la segunda parte de la tupla es una lista con las letras
-    (ordenadas y sin repetir letra) de la primera  columna que aparecen asociadas a dicho
-    valor de la segunda columna.
 
-    Rta/
-    [
-        (0, ["C"]),
-        (1, ["B", "E"]),
-        (2, ["A", "E"]),
-        (3, ["A", "B", "D", "E"]),
-        (4, ["B", "E"]),
-        (5, ["B", "C", "D", "E"]),
-        (6, ["A", "B", "C", "E"]),
-        (7, ["A", "C", "D", "E"]),
-        (8, ["A", "B", "D", "E"]),
-        (9, ["A", "B", "C", "E"]),
-    ]
-
-    """
-    return
+    x = open("data.csv", "r")
+    x = [z.replace("\n", "") for z in x]
+    x = [z.split("\t") for z in x]
+    m=[]
+    tu=[]
+    for y in x:
+        del y[2:]
+        if y[1] not in m:
+            m+=[y[1]]
+    
+    for p in m:
+        co=[]
+        for t in x:
+            if p==t[1] and t[0] not in co:
+                co+=[t[0]]
+        tu+=[(int(p),sorted(co))]
+    return sorted(tu)
+print(pregunta_08())
 
 
 def pregunta_09():
