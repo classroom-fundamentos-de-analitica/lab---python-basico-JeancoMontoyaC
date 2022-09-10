@@ -114,60 +114,62 @@ def pregunta_05():
        
         tu=(mm,max(lista),min(lista))
         lis+=[tu]
-        
-
-
     return sorted(lis)
-print(pregunta_05())
+
 
 
 def pregunta_06():
-    """
-    La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
-    una clave y el valor despues del caracter `:` corresponde al valor asociado a la
-    clave. Por cada clave, obtenga el valor asociado mas pequeño y el valor asociado mas
-    grande computados sobre todo el archivo.
+    x = open("data.csv", "r")
+    x = [z.replace("\n", "") for z in x]
+    x = [z.split("\t") for z in x]
+    m=[]
+    lis=[]
+    count=[]
+    tu=[]
+  
+    for y in x:
+        del y[0:4]
+       
+    for j in x:
+        m+=j[0].split(",")
 
-    Rta/
-    [
-        ("aaa", 1, 9),
-        ("bbb", 1, 9),
-        ("ccc", 1, 10),
-        ("ddd", 0, 9),
-        ("eee", 1, 7),
-        ("fff", 0, 9),
-        ("ggg", 3, 10),
-        ("hhh", 0, 9),
-        ("iii", 0, 9),
-        ("jjj", 5, 17),
-    ]
+    for u in m:
+        if u[0:3] not in lis:
+            lis+=[u[0:3]]
+    for t in lis:
+        count=[]
+        for i in m:
+            if t==i[0:3]:
+                count+=[int((i[4:]))]
+        tu+=[(t,min(count),max(count))]
+    return sorted(tu)
 
-    """
-    return
+
 
 
 def pregunta_07():
-    """
-    Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
-    valor posible de la columna 2 y una lista con todas las letras asociadas (columna 1)
-    a dicho valor de la columna 2.
+    x = open("data.csv", "r")
+    x = [z.replace("\n", "") for z in x]
+    x = [z.split("\t") for z in x]
+    m=[]
+    tu=[]
+    for y in x:
+        del y[2:]
+        if y[1] not in m:
+            m+=[y[1]]
+    
+    for p in m:
+        co=[]
+        for t in x:
+            if p==t[1]:
+                co+=[t[0]]
+        tu+=[(int(p),co)]
 
-    Rta/
-    [
-        (0, ["C"]),
-        (1, ["E", "B", "E"]),
-        (2, ["A", "E"]),
-        (3, ["A", "B", "D", "E", "E", "D"]),
-        (4, ["E", "B"]),
-        (5, ["B", "C", "D", "D", "E", "E", "E"]),
-        (6, ["C", "E", "A", "B"]),
-        (7, ["A", "C", "E", "D"]),
-        (8, ["E", "D", "E", "A", "B"]),
-        (9, ["A", "B", "E", "A", "A", "C"]),
-    ]
 
-    """
-    return
+
+
+    return sorted(tu)
+print(pregunta_07())
 
 
 def pregunta_08():
